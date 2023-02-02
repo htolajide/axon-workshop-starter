@@ -11,6 +11,19 @@ The following software must be installed in your local environment:
    In the Axon Server directory, create a file called `axonserver.properties` and add the following line:
 
          axoniq.axonserver.devmode.enabled=true
+         
+   Run Axon Server (@ `localhost:8024`):
+
+      java -jar axonserver.jar
+        
+*  Axon Server is also as a Docker image; you can use Docker to run Axon Server by using the following command:
+
+         docker run -d --name axonserver -p 8024:8024 -p 8124:8124 -e AXONIQ_AXONSERVER_DEVMODE_ENABLED=true axoniq/axonserver
+      
+   You can then start and stop Axon Server respectively by running:
+
+         docker start axonserver
+         docker stop axonserver
 
 In addition, an IDE such as [Jetbrains IDEA](https://www.jetbrains.com/idea/) is recommended.
 
@@ -90,10 +103,6 @@ A `BikeProjection` class exists that needs the following:
 *  Query handlers are annotated with `@QueryHandler(queryName = "someQuery")` and use `BikeStatusRepository` to retrieve and return results (that conform to what is expected in `BikeController`). 
 
 #### Running the Application with Axon Server
-Run Axon Server (@ `localhost:8024`):
-
-      java -jar axonserver.jar
-
 Open your web browser and navigate to `localhost:8024` for the Administrator UI.
 
 Start the Bike application; you will see the application connected to Axon Server in the _Overview_ section. 
