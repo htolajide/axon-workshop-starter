@@ -27,7 +27,7 @@ publishing corresponding events that are persisted in the Axon Server event stor
 Follow the steps outlined below.
 
 #### Aggregate 
-The (failing) `shouldRegisterBike` test in `BikeTests` attempts to send a `RegisterBikeCommand` to (a newly created) `Bike` aggregate, expecting 
+The (failing) `shouldRegisterBike` test in `RentalTests` attempts to send a `RegisterBikeCommand` to (a newly created) `Bike` aggregate, expecting 
 a `BikeRegisteredEvent` to be published as a result. 
    
    * Annotate the `Bike` class as an aggregate via `@Aggregate`.
