@@ -6,7 +6,7 @@ The following software must be installed in your local environment:
 
 *  JDK version 11 (or higher).
 
-*  [Axon Server](https://developer.axoniq.io/download), available to download as a standalone JAR file.
+*  [Axon Server](https://developer.axoniq.io/download) is available to download as a standalone JAR file.
 
    In the Axon Server directory, create a file called `axonserver.properties` and add the following line:
 
@@ -14,7 +14,7 @@ The following software must be installed in your local environment:
          
    Run Axon Server (@ `localhost:8024`):
 
-      java -jar axonserver.jar
+         java -jar axonserver.jar
         
 *  Axon Server is also as a Docker image; you can use Docker to run Axon Server by using the following command:
 
