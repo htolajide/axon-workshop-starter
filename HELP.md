@@ -73,11 +73,11 @@ Implement the (GET) `/bikes` and `/bikes/{bikeId}` endpoints by sending the corr
 
 *  GET `/bikes`:
 
-   `queryGateway.send("findAll", null, ResponseTypes.multipleInstancesOf(BikeStatus.class));`
+   `queryGateway.query("findAll", null, ResponseTypes.multipleInstancesOf(BikeStatus.class));`
 
 *  GET `/bikes/{bikeId}`:
 
-   `queryGateway.send("findOne", bikeId, BikeStatus.class);`
+   `queryGateway.query("findOne", bikeId, BikeStatus.class);`
 
 > View the [JavaDoc](https://apidocs.axoniq.io/latest/org/axonframework/queryhandling/QueryGateway.html#query-java.lang.String-Q-org.axonframework.messaging.responsetypes.ResponseType-) for sending queries.
 
