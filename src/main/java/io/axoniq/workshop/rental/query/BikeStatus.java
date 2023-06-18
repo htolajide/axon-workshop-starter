@@ -35,6 +35,10 @@ public class BikeStatus {
         status = RentalStatus.RENTED;
     }
 
+    public void rejected() {
+        status = RentalStatus.AVAILABLE;
+        renter = null; }
+
     public void returned() {
         status = RentalStatus.AVAILABLE;
         renter = null;

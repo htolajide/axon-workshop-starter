@@ -1,8 +1,7 @@
 package io.axoniq.workshop;
 
 import io.axoniq.workshop.rental.command.Bike;
-import io.axoniq.workshop.shared.BikeRegisteredEvent;
-import io.axoniq.workshop.shared.RegisterBikeCommand;
+import io.axoniq.workshop.shared.*;
 import org.axonframework.test.aggregate.AggregateTestFixture;
 import org.axonframework.test.aggregate.FixtureConfiguration;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,35 +29,35 @@ public class RentalTests {
                 .expectEvents(new BikeRegisteredEvent(bikeId));
     }
 
-    // @Test
-    // void shouldRequestBike() {
-    // 	fixture.given(new BikeRegisteredEvent(bikeId))
-    // 			.when(new RequestBikeCommand(bikeId, renter))
-    // 			.expectEvents(new BikeInUseEvent(bikeId, renter));
-    // }
+     @Test
+     void shouldRequestBike() {
+     	fixture.given(new BikeRegisteredEvent(bikeId))
+     			.when(new RequestBikeCommand(bikeId, renter))
+     			.expectEvents(new BikeRequestedEvent(bikeId, renter));
+     }
 
-    // @Test
-    // void shouldNotRequestUnavailableBike() {
-    // 	fixture.given(new BikeRegisteredEvent(bikeId), new BikeInUseEvent(bikeId, renter))
-    // 			.when(new RequestBikeCommand(bikeId, renter))
-    // 			.expectException(IllegalStateException.class);
-    // }
+     @Test
+     void shouldNotRequestUnavailableBike() {
+     	fixture.given(new BikeRegisteredEvent(bikeId), new BikeInUseEvent(bikeId, renter))
+     			.when(new RequestBikeCommand(bikeId, renter))
+     			.expectException(IllegalStateException.class);
+     }
 
-    // @Test
-    // void shouldReturnBike() {
-    // 	fixture.given(new BikeRegisteredEvent(bikeId), new BikeInUseEvent(bikeId, renter))
-    // 			.when(new ReturnBikeCommand(bikeId))
-    // 			.expectEvents(new BikeReturnedEvent(bikeId));
-    // }
+     @Test
+     void shouldReturnBike() {
+     	fixture.given(new BikeRegisteredEvent(bikeId), new BikeInUseEvent(bikeId, renter))
+     			.when(new ReturnBikeCommand(bikeId))
+     			.expectEvents(new BikeReturnedEvent(bikeId));
+     }
 
-    // @Test
-    // void shouldNotReturnAvailableBike() {
-    // 	fixture.given(
-    // 					new BikeRegisteredEvent(bikeId),
-    // 					new BikeInUseEvent(bikeId, renter),
-    // 					new BikeReturnedEvent(bikeId)
-    // 			)
-    // 			.when(new ReturnBikeCommand(bikeId))
-    // 			.expectException(IllegalStateException.class);
-    // }
+     @Test
+     void shouldNotReturnAvailableBike() {
+     	fixture.given(
+     					new BikeRegisteredEvent(bikeId),
+     					new BikeInUseEvent(bikeId, renter),
+     					new BikeReturnedEvent(bikeId)
+     			)
+     			.when(new ReturnBikeCommand(bikeId))
+     			.expectException(IllegalStateException.class);
+     }
 }
